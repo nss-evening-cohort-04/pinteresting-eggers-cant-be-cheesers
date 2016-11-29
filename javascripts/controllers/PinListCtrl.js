@@ -1,26 +1,26 @@
 "use strict";
 
-app.controller("PinListCtrl", function($scope, $rootScope, BoardFactory) {
-$scope.items = [];
+app.controller("PinListCtrl", function($scope, $rootScope, PinFactory) {
+$scope.pins = [];
 
-// let getItems = function() {
-//   ItemFactory.getItemList($rootScope.user.uid).then(function(items){
-//    $scope.items = items;
-//   });
-// };
-
-// getItems();
+let getPins = function() {
+  PinFactory.getPinList().then(function(pins){
+   $scope.pins = pins;
+  });
+};
+// $rootScope.user.uid
+getPins();
 
 //  $scope.deleteItem = function(itemIdToDelete) {
 //   ItemFactory.deleteItem(itemIdToDelete).then(function(){
-//     getItems();
+//     getpins();
 //   });
 //  };
 
-//  $scope.inputChange = function(itemStatusChange) {
-//     console.log(itemStatusChange);
-//   ItemFactory.editItem(itemStatusChange).then(function(){
-//     getItems();
+//  $scope.inputChange = function(pinstatusChange) {
+//     console.log(pinstatusChange);
+//   ItemFactory.editItem(pinstatusChange).then(function(){
+//     getpins();
 //   });
 //  };
 

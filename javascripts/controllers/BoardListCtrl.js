@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("PinListCtrl", function($scope, $rootScope, BoardFactory) {
+app.controller("BoardListCtrl", function($scope, $rootScope, BoardFactory) {
 $scope.items = [];
 
 // let getItems = function() {

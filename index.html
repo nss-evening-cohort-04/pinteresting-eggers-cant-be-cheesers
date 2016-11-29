@@ -3,12 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>NotPinterest</title>
 	<link rel="stylesheet" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/main.css">
 </head>
-<body>
-<h1>hehyeyhey</h1>
+<body ng-app="PintApp">
+<div ng-include="'./partials/navbar.html'"></div>
+<div ng-view></div>
 
 <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 <script type="text/javascript" src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
@@ -19,10 +20,11 @@
 <script type="text/javascript" src="/javascripts/AppConstants.js"></script>
 <script type="text/javascript" src="/javascripts/AppConfig.js"></script>
 <script type="text/javascript" src="/javascripts/factories/AuthFactory.js"></script>
-<script type="text/javascript" src="/javascripts/factories/PinFactory.js"></script>
+<script type="text/javascript" src="/javascripts/factories/BoardFactory.js"></script>
 <script type="text/javascript" src="/javascripts/factories/UserFactory.js"></script>
 <script type="text/javascript" src="/javascripts/controllers/AuthCtrl.js"></script>
 <script type="text/javascript" src="/javascripts/controllers/NavCtrl.js"></script>
+<script type="text/javascript" src="/javascripts/controllers/BoardListCtrl.js"></script>
 <script type="text/javascript" src="/javascripts/controllers/PinListCtrl.js"></script>
 <script type="text/javascript" src="/javascripts/controllers/PinNewCtrl.js"></script>
 <script type="text/javascript" src="/javascripts/controllers/PinViewCtrl.js"></script>

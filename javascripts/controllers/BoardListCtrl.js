@@ -3,11 +3,13 @@
 app.controller("BoardListCtrl", function($scope, $rootScope, BoardFactory) {
 $scope.items = [];
 
-// let getItems = function() {
-//   ItemFactory.getItemList($rootScope.user.uid).then(function(items){
-//    $scope.items = items;
-//   });
-// };
+$scope.createNewBoard = function(boardToAdd) {
+  boardToAdd.uid = $rootScope.user.uid;
+  BoardFactory.addBoard(boardToAdd).then(function() {
+    console.log("successfully added");
+  });
+};
+
 
 // getItems();
 

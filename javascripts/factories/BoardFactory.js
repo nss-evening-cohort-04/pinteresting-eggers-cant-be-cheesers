@@ -19,7 +19,22 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
+  var addBoard = function(newBoard){
+    return $q((resolve, reject)=> {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify({
+         title: newBoard.title,
+         uid: newBoard.uid
+        })
+      ).success(function(postResponse) {
+        resolve(postResponse);
+        console.log("added");
+      }).error(function(postError) {
+        reject(postError);
+      });
+    });
+  };
+
   return {
-    getPinList: getPinList,
+    getPinList: getPinList, addBoard: addBoard
   };
 });

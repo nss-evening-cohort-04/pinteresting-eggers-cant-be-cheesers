@@ -3,14 +3,14 @@
 		"pin0": {
 			"boardid": "",
 			"title": "hehehe",
-			"url": "",
-			"uid": ""
+			"url": "https://thenypost.files.wordpress.com/2014/11/borat.jpg?quality=90&strip=all&w=300&h=200&crop=1",
+			"uid": "4I7O6smHkmaAGJsfDG0gWNHBaeQ2"
 		},
 		"pin1": {
 			"boardid": "",
 			"title": "WHAT",
-			"url": "",
-			"uid": ""
+			"url": "http://images.mentalfloss.com/sites/default/files/styles/article_640x430/public/borat_primary.jpg",
+			"uid": "4I7O6smHkmaAGJsfDG0gWNHBaeQ2"
 		}
 	},
 	"boards": {
@@ -19,14 +19,14 @@
 			"title": "Hey"
 		},
 		"board1": {
-			"uid": "",
+			"uid": "4I7O6smHkmaAGJsfDG0gWNHBaeQ2",
 			"title": "sup"
 		}
 	},
 	"users": {
 		"user1":{
-			"uid": "",
-			"username": "a"
+			"uid": "4I7O6smHkmaAGJsfDG0gWNHBaeQ2",
+			"username": "tharry"
 		},
 		"user2":{
 			"uid": "",

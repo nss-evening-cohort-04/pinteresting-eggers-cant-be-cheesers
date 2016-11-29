@@ -11,6 +11,8 @@ let getPins = function() {
 // $rootScope.user.uid
 getPins();
 
+
+
 //  $scope.deleteItem = function(itemIdToDelete) {
 //   ItemFactory.deleteItem(itemIdToDelete).then(function(){
 //     getpins();

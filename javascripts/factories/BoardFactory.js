@@ -2,16 +2,16 @@
 
 app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG) {
 
-  var getPinList = function(userId) {
+  var getUserBoards = function(userId) {
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json?orderBy="uid"&equalTo="${userId}"`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/boards.json?orderBy="uid"&equalTo="${userId}"`)
       .success(function(response) {
-        let items = [];
+        let boards = [];
         Object.keys(response).forEach(function(key) {
           response[key].id = key;
-          items.push(response[key]);
+          boards.push(response[key]);
         });
-        resolve(items);
+        resolve(boards);
       })
       .error(function(errorResponse) {
         reject(errorResponse);
@@ -35,6 +35,6 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG) {
   };
 
   return {
-    getPinList: getPinList, addBoard: addBoard
+    getUserBoards: getUserBoards, addBoard: addBoard
   };
 });

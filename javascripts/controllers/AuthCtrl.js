@@ -3,7 +3,6 @@
 app.controller("AuthCtrl", function($scope, $rootScope, $location, $routeParams, AuthFactory, UserFactory) {
   $scope.loginContainer = true;
   $scope.registerContainer = false;
-
   if ($location.path() == "/logout") {
     AuthFactory.logout();
     $rootScope.user = {};

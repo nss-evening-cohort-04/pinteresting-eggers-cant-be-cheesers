@@ -2,12 +2,11 @@
 
 app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
 
-  var getPinList = function(userId) {
+  var getPinList = function(boardId) {
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json?orderBy="uid"&equalTo="${userId}`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json?orderBy="boardid"&equalTo="${boardId}"`)
       .success(function(response) {
         let pins = [];
-        console.log(pins);
         Object.keys(response).forEach(function(key) {
           response[key].id = key;
           pins.push(response[key]);

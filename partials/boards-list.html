@@ -1,3 +1,22 @@
+<h3>My Boards</h3>
+<div ng-repeat="board in boards">
+   <div class="panel panel-default" ng-click="selectBoard(board.id)">
+      <div class="panel-body">
+         <div class="col-xs-1">{{board.title}}</div>
+      </div>
+   </div>
+</div>
+
+
+<div id="wrapper" ng-if="pindisplay">
+  <div id="columns" ng-repeat="pin in pins">
+    <div class="pin">
+      <h1>{{pin.title}}</h1>
+      <img ng-src="{{pin.url}}">
+    </div>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">

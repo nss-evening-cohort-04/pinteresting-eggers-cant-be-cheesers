@@ -3,7 +3,6 @@
 app.controller("BoardListCtrl", function($scope, $rootScope, BoardFactory, PinFactory) {
 $scope.boards = [];
 $scope.pins = []
-$scope.pindisplay = false;
 
 $scope.createNewBoard = function(boardToAdd) {
   boardToAdd.uid = $rootScope.user.uid;
@@ -23,8 +22,6 @@ getBoards();
  $scope.selectBoard = function(boardId) {
   PinFactory.getPinList(boardId).then(function(returnedPins){
     $scope.pins = returnedPins;
-    console.log($scope.pins);
-    $scope.pindisplay = !$scope.pindisplay;
     })
  };
 

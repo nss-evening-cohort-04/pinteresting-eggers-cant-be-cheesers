@@ -11,7 +11,7 @@ let getPins = function() {
 // $rootScope.user.uid
 getPins();
 
-
+// ImgurFactory.imageList($scope.searchText);
 
 //  $scope.deleteItem = function(itemIdToDelete) {
 //   ItemFactory.deleteItem(itemIdToDelete).then(function(){

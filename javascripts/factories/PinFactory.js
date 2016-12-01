@@ -2,22 +2,23 @@
 
 app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
 
-  var getPinDatabase = function() {
-   return $q((resolve, reject) => {
-     $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json`)
-     .success(function(response) {
-       let allPins = [];
-       Object.keys(response).forEach(function(key) {
-         response[key].id = key;
-         allPins.push(response[key]);
-       });
-       resolve(allPins);
-     })
-     .error(function(errorResponse2) {
-       reject(errorResponse2);
-     });
-   });
- };
+ //  var getPinDatabase = function() {
+ //   return $q((resolve, reject) => {
+ //     $http.get(`${FIREBASE_CONFIG.databaseURL}/globalpins.json`)
+ //     .success(function(response) {
+ //       let allPins = [];
+ //       Object.keys(response).forEach(function(key) {
+ //         response[key].id = key;
+ //         allPins.push(response[key]);
+ //       });
+ //       resolve(allPins);
+ //       console.log(allPins);
+ //     })
+ //     .error(function(errorResponse2) {
+ //       reject(errorResponse2);
+ //     });
+ //   });
+ // };
 
    var postNewPinDataBase = function(pin) {
    return $q((resolve, reject) => {
@@ -37,12 +38,14 @@ app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
  };
 
   var postNewPinToBoard = function(boardId, pin) {
+    console.log("boardid", boardId);
+    console.log("pin", pin);
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`,
         JSON.stringify({
           boardid: boardId,
           title: pin.title,
-          url: pin.url
+          url: pin.link
         })
       )
       .success(function(postResponse) {
@@ -68,7 +71,7 @@ app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
   };
 
   return {
-    getPinDatabase: getPinDatabase,
+   // getPinDatabase: getPinDatabase,
     postNewPinDataBase: postNewPinDataBase,
     postNewPinToBoard: postNewPinToBoard,
     deletePin: deletePin

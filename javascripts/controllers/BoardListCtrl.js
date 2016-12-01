@@ -7,7 +7,7 @@ $scope.pins = []
 $scope.createNewBoard = function(boardToAdd) {
   boardToAdd.uid = $rootScope.user.uid;
   BoardFactory.addBoard(boardToAdd).then(function() {
-    console.log("successfully added");
+  getBoards();
   });
 };
 
@@ -20,11 +20,19 @@ let getBoards = function() {
 getBoards();
 
  $scope.selectBoard = function(boardId) {
-  PinFactory.getPinList(boardId).then(function(returnedPins){
+  BoardFactory.getPinList(boardId).then(function(returnedPins){
     $scope.pins = returnedPins;
     })
  };
 
+$scope.deletePinFromBoard = function(pinId, boardId) {
+  PinFactory.deletePin(pinId).then(function(deleteSuccess){
+    console.log("successfully deleted!");
+    BoardFactory.getPinList(boardId).then(function(returnedPins){
+    $scope.pins = returnedPins;
+    })
+  })
+}
 
 //  $scope.selectBoard = function(boardId) {
 //  var ref = firebase.database().ref();

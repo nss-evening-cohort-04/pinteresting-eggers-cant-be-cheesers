@@ -19,6 +19,23 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
+  var getPinList = function(boardId) {
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json?orderBy="boardid"&equalTo="${boardId}"`)
+      .success(function(response) {
+        let pins = [];
+        Object.keys(response).forEach(function(key) {
+          response[key].id = key;
+          pins.push(response[key]);
+        });
+        resolve(pins);
+      })
+      .error(function(errorResponse) {
+        reject(errorResponse);
+      });
+    });
+  };
+
   var addBoard = function(newBoard){
     return $q((resolve, reject)=> {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/boards.json`, JSON.stringify({
@@ -35,6 +52,6 @@ app.factory("BoardFactory", function($q, $http, FIREBASE_CONFIG) {
   };
 
   return {
-    getUserBoards: getUserBoards, addBoard: addBoard
+    getUserBoards: getUserBoards, addBoard: addBoard, getPinList: getPinList
   };
 });

@@ -1,7 +1,31 @@
-<h1>Pin list</h1>
-<div class="container">
-	<div class="row" ng-repeat="pin in pins">
-		<h4>{{pin.title}}</h4><br>
-		<img ng-src="{{pin.url}}" alt="woops">
-	</div>
+<div id="wrapper" class="col-md-offset-1">
+  <div id="columns" class="col-lg-12"></div>
+  <div class="col-lg-3 col-md-3 col-xs-6 pin" ng-repeat="pin in pins">
+    <h1>{{pin.title}}</h1><img class="img-responsive" ng-src="{{pin.url}}">
+    <button type="button" class="btn col-md-2 col-md-offset-5 btn-success btn-lg" data-toggle="modal" data-target="#addPin" ng-click="setPinId(pin)">
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addPin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+  <div class="col-md-4 col-md-offset-4">
+    <!--<h1>{{ message }}</h1>-->
+    <select class="form-control" ng-model="board" ng-options="board as board.title for board in boards" ng-change="selectBoard(board.id)"></select>
+  </div>
+<div class="row">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addPinToBoard(board)">Create Board</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

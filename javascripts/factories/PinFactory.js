@@ -2,31 +2,30 @@
 
 app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
 
-  var getPinList = function(boardId) {
-    return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json?orderBy="boardid"&equalTo="${boardId}"`)
-      .success(function(response) {
-        let pins = [];
-        Object.keys(response).forEach(function(key) {
-          response[key].id = key;
-          pins.push(response[key]);
-        });
-        resolve(pins);
-      })
-      .error(function(errorResponse) {
-        reject(errorResponse);
-      });
-    });
-  };
+  var getPinDatabase = function() {
+   return $q((resolve, reject) => {
+     $http.get(`${FIREBASE_CONFIG.databaseURL}/pins.json`)
+     .success(function(response) {
+       let allPins = [];
+       Object.keys(response).forEach(function(key) {
+         response[key].id = key;
+         allPins.push(response[key]);
+       });
+       resolve(allPins);
+     })
+     .error(function(errorResponse2) {
+       reject(errorResponse2);
+     });
+   });
+ };
 
-  var postNewPin = function(newPin) {
+  var postNewPinToBoard = function(boardId, pin) {
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`,
         JSON.stringify({
-          boardid: newPin.boardid,
-          title: newPin.title,
-          url: newPin.url,
-          uid: newPin.uid
+          boardid: boardId,
+          title: pin.title,
+          url: pin.url
         })
       )
       .success(function(postResponse) {
@@ -38,9 +37,23 @@ app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
     });
   };
 
+  var deletePin = function(pinToDelete) {
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/pins/${pinToDelete}.json`
+      )
+      .success(function(deleteResponse) {
+        resolve(deleteResponse);
+      })
+      .error(function(deleteError) {
+        reject(deleteError);
+      });
+    });
+  };
+
   return {
-    getPinList: getPinList,
-    postNewPin: postNewPin
+    getPinDatabase: getPinDatabase,
+    postNewPinToBoard: postNewPinToBoard,
+    deletePin: deletePin
   };
 });
 

@@ -11,15 +11,25 @@
     <select class="form-control" ng-model="board" ng-options="board as board.title for board in boards" ng-change="selectBoard(board.id)"></select>
   </div>
 <div class="row">
-<div id="wrapper">
+<!-- <div id="wrapper">
   <div id="columns" ng-repeat="pin in pins">
-    <div class="pin">
+    <div class="col-xs-4">
       <h1>{{pin.title}}</h1>
       <img ng-src="{{pin.url}}">
     </div>
   </div>
 </div>
+</div> -->
+
+<div id="wrapper" class="col-md-offset-1">
+  <div id="columns" class="col-lg-12"></div>
+  <div class="col-lg-3 col-md-3 col-xs-6 pin" ng-repeat="pin in pins">
+    <h1>{{pin.title}}</h1><img class="img-responsive" ng-src="{{pin.url}}">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deletePinFromBoard(pin.id, board.id)">X</button>
+  </div>
 </div>
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">

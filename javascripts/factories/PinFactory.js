@@ -19,6 +19,23 @@ app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
    });
  };
 
+   var postNewPinDataBase = function(pin) {
+   return $q((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/globalpins.json`,
+        JSON.stringify({
+          title: pin.title,
+          url: pin.url
+        })
+      )
+     .success(function(response) {
+       resolve(response);
+     })
+     .error(function(errorResponse) {
+       reject(errorResponse);
+     });
+   });
+ };
+
   var postNewPinToBoard = function(boardId, pin) {
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/pins.json`,
@@ -52,6 +69,7 @@ app.factory("PinFactory", function($q, $http, FIREBASE_CONFIG) {
 
   return {
     getPinDatabase: getPinDatabase,
+    postNewPinDataBase: postNewPinDataBase,
     postNewPinToBoard: postNewPinToBoard,
     deletePin: deletePin
   };

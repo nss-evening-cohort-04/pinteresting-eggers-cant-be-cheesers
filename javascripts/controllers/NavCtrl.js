@@ -13,6 +13,10 @@ app.controller("NavCtrl", ($scope) => {
   {
     name:"My Boards",
     url: "#/myboards/view"
+  },
+  {
+    name:"Add New Pin",
+    url: '#/pins/new'
   }
   ];
 });
